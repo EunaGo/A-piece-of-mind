@@ -4,15 +4,16 @@ public class Ex {
 	
 public static void main(String[] args) {
 		
-	int a = (((25+5)+(36/4))-75)*5;
-	int b = (((25*5)+(36-4))-71)/4;
-	int c = (128/4)*2;
-		
-	if((a > b)&&(b > c)) 
-		System.out.println("true");
+	int fahrenheit =100;
+	float pi = 3.141592f;
+
+	float celcius = (int)((5.0f/9.0f * (fahrenheit - 32.0f))*100)/100f;
+	float shortpi = (int)(pi*1000)/1000f;
+	System.out.println("Fahrenheit:"+fahrenheit);
+
+	System.out.println("Celcius:" + celcius);
 	
-	else
-		System.out.println("false");
+	System.out.println(shortpi);
 	}
 
 }
