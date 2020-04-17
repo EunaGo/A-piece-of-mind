@@ -17,16 +17,14 @@ public class Triangle {
 	
 	//생성자 : 인스턴스 생성시에 반드시 한번 실행 > 인스턴스 변수들의 초기화 작업
 	//		생략 가능(default Contructor)
-	
+	//클래스 : 변수(밑변, 높이)+메서드(밑변, 높이변경 메서드/ 삼각형 넓이 반환메서드)
 	//기본 생성자
-	Triangle(){
-		
-	}
+	Triangle(){	}
 	
-	Triangle(int w, int h){
-		width = w;
-		height = h;
-	}
+	//Triangle(int w, int h){
+	//	width = w;
+	//	height = h;
+	//}
 
 	
 	float area() {
@@ -40,8 +38,8 @@ public class Triangle {
 	public static void main(String[] args) {
 		
 		//삼각형 객체생성
-		//Triangle t = new Triangle();
-		Triangle t = new Triangle(5,3);
+		Triangle t = new Triangle();
+		//Triangle t = new Triangle(5,3);
 		
 		//데이터 설정
 		t.setData(5,3);
