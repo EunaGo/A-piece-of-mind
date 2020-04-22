@@ -2,54 +2,49 @@ package ex;
 
 public class Triangle {
 	
+	// ë³€ìˆ˜ : ë°‘ë³€, ë†’ì´
+	int width;	// ë°‘ë³€ì˜ ë°ì´í„°
+	int height;	// ë†’ì´ ë°ì´í„°
 	
-	//º¯¼ö: ¹Øº¯, ³ôÀÌ
-	int width, height; //Àü¿ªº¯¼ö
+	// ìƒì„±ì : ì¸ìŠ¤í„´ìŠ¤ ìƒì„±ì‹œì— ë°˜ë“œì‹œ í•œë²ˆ ì‹¤í–‰ -> ì¸ìŠ¤í„´ìŠ¤ë³€ìˆ˜ë“¤ì˜ ì´ˆê¸°í™” ì‘ì—…
+	//        ìƒëµ ê°€ëŠ¥(default Contructor)
 	
-	//¸Ş¼­µå: º¯È¯? ¸Å°³º¯¼ö?
-	//		1. ¹Øº¯°ú ³ôÀÌÀÇ µ¥ÀÌÅÍ¸¦ º¯°æÇÏ´Â ¸Ş¼­µå
-	void setData(int w, int h) { //Áö¿ªº¯¼ö 
+	// ê¸°ë³¸ ìƒì„±ì
+	Triangle(){
 		
+	}
+	
+	Triangle(int w, int h){
 		width = w;
 		height = h;
-		
-	}  
-	
-	//»ı¼ºÀÚ : ÀÎ½ºÅÏ½º »ı¼º½Ã¿¡ ¹İµå½Ã ÇÑ¹ø ½ÇÇà > ÀÎ½ºÅÏ½º º¯¼öµéÀÇ ÃÊ±âÈ­ ÀÛ¾÷
-	//		»ı·« °¡´É(default Contructor)
-	//Å¬·¡½º : º¯¼ö(¹Øº¯, ³ôÀÌ)+¸Ş¼­µå(¹Øº¯, ³ôÀÌº¯°æ ¸Ş¼­µå/ »ï°¢Çü ³ĞÀÌ ¹İÈ¯¸Ş¼­µå)
-	//±âº» »ı¼ºÀÚ
-	Triangle(){	}
-	
-	//Triangle(int w, int h){
-	//	width = w;
-	//	height = h;
-	//}
-
-	
-	float area() {
-		
-		float result = width*height/2f;
-		
-		return result;
-		
 	}
-
+	
+	// ë°‘ë³€ê³¼ ë†’ì´ ë°ì´í„°ë¥¼ ë³€ê²½í•˜ëŠ” ë©”ì„œë“œ
+	void setData(int w, int h) {
+		width=w;
+		height=h;
+	}
+	
+	// ì‚¼ê°í˜•ì˜ ë„“ì´ë¥¼ êµ¬í•´ì„œ ë°˜í™˜í•˜ëŠ” ë©”ì„œë“œ
+	float area() {
+		float result = width*height/2f;
+		return result;
+	}
+	
 	public static void main(String[] args) {
 		
-		//»ï°¢Çü °´Ã¼»ı¼º
-		Triangle t = new Triangle();
-		//Triangle t = new Triangle(5,3);
+		// ì‚¼ê°í˜• ê°ì²´ ìƒì„±
+		//Triangle t = new Triangle();
+		Triangle t = new Triangle(5,3);
 		
-		//µ¥ÀÌÅÍ ¼³Á¤
-		t.setData(5,3);
+		// ë°ì´í„° ì„¤ì •
+		//t.setData(5,3);
 		
-		System.out.println("»ï°¢ÇüÀÇ ¹Øº¯: "+t.width);
-		System.out.println("»ï°¢ÇüÀÇ ³ôÀÌ: "+t.height);
+		System.out.println("ì‚¼ê°í˜•ì˜ ë°‘ë³€ : "+ t.width+", ë†’ì´ : " + t.height);
 		
-		//³ĞÀÌ¸¦ ±¸ÇÏ´Â ¸Ş¼­µå ½ÇÇà
-		System.out.println("»ï°¢ÇüÀÇ ³ĞÀÌ: "+t.area());
+		// ë„“ì´ëŠ” êµ¬í•˜ëŠ” ë©”ì„œë“œ ì‹¤í–‰
+		System.out.println("ì‚¼ê°í˜•ì˜ ë„“ì´ëŠ” " + t.area() + "ì…ë‹ˆë‹¤.");
+		
 		
 	}
-	
 }

@@ -1,64 +1,71 @@
 package ex;
 
-public class Boy_t {
+//import card.Card;
 
-	//±¸½½ÀÇ °³¼ö
+public class Boy_t {	// test.Boy
+	
+	
+	// êµ¬ìŠ¬ì˜ ê°œìˆ˜
 	int numOfMarble;
 	
-	//^»ı¼ºÀÚ : ÃÊ±âÈ­ ¸ñÀû
+	
 	Boy_t(int num){
 		numOfMarble = num;
-		
 	}
 	
-	//±¸½½ÀÇ °³¼ö ¼³Á¤
+	
+	// êµ¬ìŠ¬ì˜ ê°œìˆ˜ ì„¤ì •
 	void setMarble(int num) {
-		numOfMarble = num;
-		
+		numOfMarble=num;
 	}
+	
 	
 	void gameWin(Boy_t boy, int num) {
 		numOfMarble+=num;
-		boy.numOfMarble-=num; // »ó´ë
+		boy.numOfMarble-=num;
 	}
 	
 	void showData() {
-		System.out.println("ÇöÀç º¸À¯ÇÑ ±¸½½ÀÇ °³¼ö´Â "+numOfMarble+"°³ ÀÔ´Ï´Ù.");
+		System.out.println("í˜„ì¬ ë³´ìœ í•œ êµ¬ìŠ¬ì˜ ê°œìˆ˜ëŠ” "+numOfMarble+"ê°œ ì…ë‹ˆë‹¤.");
 	}
 	
 	public static void main(String[] args) {
 		
-		//^Ã¶¼ö »ı¼º
+		// ì² ìˆ˜ ìƒì„±
 		Boy_t boy1 = new Boy_t(15);
-		//^¿µÈñ »ı¼º
+		// ì˜í¬ ìƒì„±
 		Boy_t boy2 = new Boy_t(9);
 		
-		//Ã¶¼ö »ı¼º
-		//Boy_t boy1 = new Boy_t();
-		//¿µÈñ »ı¼º
-		//Boy_t boy2 = new Boy_t();
-		
-		//Ã¶¼ö :15 	¿µÈñ: 9
+		// ì² ìˆ˜ëŠ” êµ¬ìŠ¬ì„ 15ê°œ ë³´ìœ , ì˜í¬ëŠ” êµ¬ìŠ¬ì„ 9ê°œ ë³´ìœ 
 		//boy1.setMarble(15);
 		//boy2.setMarble(9);
 		
-		System.out.println("Ã¶¼ö´Â ±¸½½À» "+boy1.numOfMarble+"°³ º¸À¯, ¿µÈñ´Â ±¸½½À» "+boy2.numOfMarble+"°³ º¸À¯");
+		System.out.println("ì² ìˆ˜ëŠ” êµ¬ìŠ¬ì„ "+boy1.numOfMarble+"ê°œ ë³´ìœ , ì˜í¬ëŠ” êµ¬ìŠ¬ì„ "+boy2.numOfMarble+"ê°œ ë³´ìœ ");
 		
-		//¡°1Â÷ °ÔÀÓ¿¡¼­ ¾î¸°ÀÌ 1Àº ¾î¸°ÀÌ 2ÀÇ ±¸½½ 2°³¸¦ È¹µæÇÑ´Ù¡±
-		System.out.println("1Â÷ °ÔÀÓ¿¡¼­ ¾î¸°ÀÌ 1Àº ¾î¸°ÀÌ 2ÀÇ ±¸½½ 2°³¸¦ È¹µæÇÑ´Ù");
+		System.out.println("-----------------------------------------");
+		
+		// 1ì°¨ ê²Œì„ì—ì„œ ì–´ë¦°ì´ 1ì€ ì–´ë¦°ì´ 2ì˜ êµ¬ìŠ¬ 2ê°œë¥¼ íšë“í•œë‹¤
+		System.out.println("1ì°¨ ê²Œì„ì—ì„œ ì² ìˆ˜ëŠ” ì˜í¬ì˜ êµ¬ìŠ¬ 2ê°œë¥¼ íšë“í•œë‹¤");
+		
 		boy1.gameWin(boy2, 2);
-		//System.out.println(boy1.numOfMarble);
 		
-		//¡°2Â÷ °ÔÀÓ¿¡¼­ ¾î¸°ÀÌ 2´Â ¾î¸°ÀÌ 1ÀÇ ±¸½½ 7°³¸¦ È¹µæÇÑ´Ù.¡±
-		System.out.println("2Â÷ °ÔÀÓ¿¡¼­ ¾î¸°ÀÌ 2´Â ¾î¸°ÀÌ 1ÀÇ ±¸½½ 7°³¸¦ È¹µæÇÑ´Ù.");
-		boy2.gameWin(boy1, 7);
-		//System.out.println(boy2.numOfMarble);
-		
-		System.out.println("Ã¶¼ö");
+		System.out.println("ì² ìˆ˜");
 		boy1.showData();
-		System.out.println("¿µÈñ");
+		System.out.println("ì˜í¬");
 		boy2.showData();
 		
+		System.out.println("-----------------------------------------");
+		
+		// 2ì°¨ ê²Œì„ì—ì„œ ì–´ë¦°ì´ 2ëŠ” ì–´ë¦°ì´ 1ì˜ êµ¬ìŠ¬ 7ê°œë¥¼ íšë“í•œë‹¤.
+		System.out.println("2ì°¨ ê²Œì„ì—ì„œ ì˜í¬ëŠ” ì² ìˆ˜ì˜ êµ¬ìŠ¬ 7ê°œë¥¼ íšë“í•œë‹¤.");
+		boy2.gameWin(boy1, 7);
+
+		System.out.println("ì² ìˆ˜");
+		boy1.showData();
+		System.out.println("ì˜í¬");
+		boy2.showData();
+		
+		
+		
 	}
-	
 }
