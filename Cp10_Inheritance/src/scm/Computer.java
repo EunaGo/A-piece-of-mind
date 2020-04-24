@@ -11,4 +11,8 @@ public class Computer extends Product{
 		return "Computer";
 	}
 	
+	void programming() {
+		System.out.println("프로그램을 만듭니다.");
+	}
+	
 }

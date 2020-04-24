@@ -9,7 +9,11 @@ public class Audio extends Product{
 
 	@Override
 	public String toString() {
-		return "Audio []";
+		return "Audio";
+	}
+	
+	void music() {
+		System.out.println("음악을 듣습니다.");
 	}
 	
 }

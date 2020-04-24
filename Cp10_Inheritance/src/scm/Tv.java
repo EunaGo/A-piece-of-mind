@@ -10,4 +10,8 @@ public class Tv extends Product{
 		return "Tv";
 	}
 	
+	void display() {
+		System.out.println("채널을 시청합니다.");
+	}
+	
 }
