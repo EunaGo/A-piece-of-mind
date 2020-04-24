@@ -19,5 +19,4 @@ public class BaseEnSpeaker extends Speaker{
 	void setBaseRate(int base) {
 		this.baseRate=base;
 	}
-	
 }
