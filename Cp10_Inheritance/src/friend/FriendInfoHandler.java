@@ -17,11 +17,12 @@ public class FriendInfoHandler {
 	public FriendInfoHandler(int num) {
 		myFriends = new Friend[num];
 		numOfFriends = 0;
+		kb = new Scanner(System.in);
 	}
 
-	void addFriendInfo(Friend fren) {
+	void addFriendInfo(Friend f) {
 		// 배열에 저장
-		myFriends[numOfFriends++] = fren;
+		myFriends[numOfFriends++] = f;
 	}
 
 	// 2. 사용자에게 데이터를 받아 사용자 요청에 맞는 인스턴스 생성
