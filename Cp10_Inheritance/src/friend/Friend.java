@@ -9,7 +9,7 @@ package friend;
  고딩 : 이름, 전번, 주소, 직장
  */
 
-public class Friend {
+public abstract class Friend {
 
 	String name; // 친구의 이름
 	String phoneNum; // 친구의 전화번호
@@ -29,8 +29,9 @@ public class Friend {
 	}
 	
 	// 상속의 목적으로 오버라이딩할 메서드
-	void showData() {}			// 기본데이터와 하위 클래스의 데이터를 출력 >> 오버라이딩
+	//void showData() {}			// 기본데이터와 하위 클래스의 데이터를 출력 >> 오버라이딩
 	
-	
+	// 추상메서드
+	abstract void showData();
 	
 }
