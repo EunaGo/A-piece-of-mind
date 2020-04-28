@@ -1,6 +1,7 @@
 package ex;
 
-public interface Fightable implements Fightable{
+public interface Fightable {
 
-	
+	void move();
+	void attact();
 }

@@ -1,17 +1,16 @@
 package ex;
 
-public class AudioPlayer extends Player {
+public class Fighter extends unit implements Fightable{
 
 	@Override
-	void play(int pos) {
+	public void move() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
-	void stop() {
+	public void attact() {
 		// TODO Auto-generated method stub
-
+		
 	}
-
 }
