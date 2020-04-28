@@ -14,22 +14,22 @@ public class PhoneBookMain {
 			manager.kb.nextLine();
 			
 			switch(select) {
-			case 1:
+			case MenuInterFace.INSERT:
 				manager.creatInfo();
 				break;
-			case 2: 
+			case MenuInterFace.SEARCH: 
 				manager.showInfo();
 				break;
-			case 3:
+			case MenuInterFace.DELETE:
 				manager.deleteInfo();
 				break;
-			case 4:
+			case MenuInterFace.EDIT:
 				manager.editInfo();
 				break;
-			case 5:
+			case MenuInterFace.PRINT_ALL:
 				manager.showAllInfo();
 				break;
-			case 6:
+			case MenuInterFace.EXIT:
 				System.out.println("프로그램을 종료합니다.");
 				return;
 			}

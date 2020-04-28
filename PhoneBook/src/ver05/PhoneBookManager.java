@@ -6,11 +6,12 @@ import java.util.Scanner;
 public class PhoneBookManager {
 
 	//// 1. 배열 선언
-	PhoneInfo[] books;
+	private final PhoneInfo[] books;
 
 	// 배열에 저장된 요소의 개수
 	int numOfInfo;
 	Scanner kb;
+	
 
 	// 생성자를 통해서 배열 생성, 요소의 개수 초기화
 	PhoneBookManager(int num) {
@@ -19,6 +20,12 @@ public class PhoneBookManager {
 		// 요소 개수의 초기화
 		numOfInfo = 0;
 		kb = new Scanner(System.in);
+	}
+	
+	// 싱글톤 패턴
+	private static PhoneBookManager book = new PhoneBookManager(100);
+	public static PhoneBookManager getInstance() {
+		return book;
 	}
 
 	//// 2. 배열에 정보 저장
