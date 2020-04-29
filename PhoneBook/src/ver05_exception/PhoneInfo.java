@@ -1,4 +1,4 @@
-package ver05;
+package ver05_exception;
 
 // 상속을 위한 기본 클래스 구성
 // 인스턴스 생성의 목적이 없음
