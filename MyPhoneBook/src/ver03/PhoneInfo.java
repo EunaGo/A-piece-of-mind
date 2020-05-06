@@ -21,5 +21,10 @@ public class PhoneInfo {
 		System.out.println("전화번호: "+phoneNumber);
 		System.out.println("생일: "+birthday);
 	}
+	
+	boolean checkName(String name) {
+		
+			return this.name.equals(name);
+	}
 
 }

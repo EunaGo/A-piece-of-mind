@@ -2,13 +2,13 @@ package ex;
 
 public class Singleton {
 	
-	// 1. »ı¼ºÀÚÀÇ Á¢±ÙÁ¦¾îÁö½ÃÀÚ : private -> ÀÎ½ºÅÏ½º »ı¼º ºÒ°¡
+	// 1. ìƒì„±ìì˜ ì ‘ê·¼ì œì–´ì§€ì‹œì : private -> ì¸ìŠ¤í„´ìŠ¤ ìƒì„± ë¶ˆê°€
 	private Singleton() {}
 	
-	// 2. °øÀ¯ÇÒ °´Ã¼¸¦ »ı¼º
+	// 2. ê³µìœ í•  ê°ì²´ë¥¼ ìƒì„±
 	private static Singleton s = new Singleton();
 	
-	// 3. ÂüÁ¶°ªÀ» ¹İÈ¯ÇÏ´Â ¸Ş¼­µé »ı¼º
+	// 3. ì°¸ì¡°ê°’ì„ ë°˜í™˜í•˜ëŠ” ë©”ì„œë“¤ ìƒì„±
 	public static Singleton getInstance() {
 		return s;
 	}
