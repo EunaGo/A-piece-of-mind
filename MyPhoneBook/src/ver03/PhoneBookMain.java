@@ -9,7 +9,7 @@ public class PhoneBookMain {
 		PhoneInfo info = null;
 		
 		while(true) {
-			info.creatInstace();
+			info = manager.creatInstace();
 			info.showInfo();
 		}
 
