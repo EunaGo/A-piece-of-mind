@@ -20,7 +20,7 @@ class OtherModifier {
 	
 	void ex() {
 		this.a=2;
-		static int b=1;
+
 	}
 }
 
