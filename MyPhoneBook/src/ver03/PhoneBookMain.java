@@ -16,7 +16,7 @@ public class PhoneBookMain {
 //			info = manager.creatInstace();
 //			info.showInfo();
 			
-			Menu.showMenu();
+			//Menu.showMenu();
 			
 			int selectNum = sc.nextInt();
 			
