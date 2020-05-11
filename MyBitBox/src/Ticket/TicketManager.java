@@ -1,5 +1,6 @@
 package Ticket;
 
+////////////////////////////////////////////////////////////////////////
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -9,15 +10,15 @@ import TimeTable.TimeTable;
 import TimeTable.TimeTableManager;
 import user.Info;
 import user.MemberInfo;
+import user.exception.AgeLimitException;
 import user.exception.OutOfNumberException;
 
 public class TicketManager {
 
 	TimeTableManager tManager = TimeTableManager.getInstatnce();
 	MovieManager mManager = MovieManager.getInstance();
-	Info info;
 	Scanner sc = new Scanner(System.in);
-
+	
 	private int serialNum = 2020000;
 	private ArrayList<Ticket> AllTicketList;
 
@@ -26,8 +27,14 @@ public class TicketManager {
 
 	}
 
-	public int chooseMovie() {
+	public int chooseMovie(Info info) {
 		int selectMovie = 0;
+		int birthtoInt;
+		int age;
+		
+		birthtoInt = Integer.parseInt(info.getBirth());
+		age = 2020 - birthtoInt / 10000; // 만 나이
+
 		for (int i = 0; i < mManager.getMovieList().size(); i++) {
 			System.out.print(i + 1 + ") ");
 			System.out.println(mManager.getMovieList().get(i).getTitle());
@@ -35,21 +42,37 @@ public class TicketManager {
 
 		while (true) {
 			try {
+
 				System.out.print("영화 선택 >> ");
 				selectMovie = Integer.parseInt(sc.nextLine().trim()) - 1;
 				if (selectMovie >= mManager.getMovieList().size()) {
 					OutOfNumberException e = new OutOfNumberException();
 					throw e;
 				}
+				
+				if (mManager.getMovieList().get(selectMovie).getGrade() > age) {
+					//AgeLimitException e = new AgeLimitException();
+					System.out.println("연령제한으로 선택하신 영화는 예매가 불가합니다.");
+					return 99;
+//					throw e;
+				}
+
 			} catch (OutOfNumberException e) {
 				System.out.println(e.getMessage());
 				continue;
-			} catch (Exception e) {
+			}
+				//catch (AgeLimitException e) {
+//				System.out.println(e.getMessage());
+//				continue;
+//			}
+			catch (Exception e) {
 				System.out.println("잘못된 입력이에요");
 				continue;
-			}
+			} 
+			
 			break;
 		}
+
 		return selectMovie;
 	}
 
@@ -73,8 +96,8 @@ public class TicketManager {
 		int choice2 = 0;
 		int choicePoint = 0;
 		int usePoint = 0;
-		int birthtoInt;	// String타입의 brith를 Int로 담을 변수
-		while (true) {
+//		int birthtoInt;	// String타입의 brith를 Int로 담을 변수
+		 while (true) {
 			System.out.println("1.영화정보보기");
 			System.out.println("2.영화예매");
 			try {
@@ -96,10 +119,14 @@ public class TicketManager {
 		switch (choice) {
 		case 1: // 영화 정보보기
 			while (true) {
-				selectMovie = chooseMovie();
+				selectMovie = chooseMovie(info);
+				if(selectMovie == 99) {	
+					return;
+				}
 				mManager.getMovieList().get(selectMovie).showMovieInfo();
+
 				System.out.println("이 영화로 예매하시겠어요?");
-				//int choice2 = 0;
+				// int choice2 = 0;
 				while (true) {
 					System.out.println("1.YES\t2.다른영화선택\t3.예매 창 종료");
 					try {
@@ -118,32 +145,36 @@ public class TicketManager {
 					break;
 				}
 				if (choice2 == 1) {
-					
-					int birthyear;	// 태어난 년도
-					int age;
-					
-					birthtoInt = Integer.parseInt(info.getBirth());
-					age = 2020 - birthtoInt/10000;	// 만 나이
-					
-					if(mManager.getMovieList().get(selectMovie).getGrade()>age) {	
-						System.out.println("연령제한으로 선택하신 영화는 예매가 불가합니다.");
-						continue;
-					}
+
+//					int birthyear;	// 태어난 년도
+//					int age;
+//					
+//					birthtoInt = Integer.parseInt(info.getBirth());
+//					age = 2020 - birthtoInt/10000;	// 만 나이
+//					
+//					if(mManager.getMovieList().get(selectMovie).getGrade()>age) {	
+//						System.out.println("연령제한으로 선택하신 영화는 예매가 불가합니다.");
+//						continue;
+//					}
 					break;
 				} else if (choice2 == 2) {
 					continue;
 				} else {
-				break;
+					break;
 				}
 			}
-			
+
 			break;
+
 		case 2: // 영화예매
-			selectMovie = chooseMovie();
-			//
+			selectMovie = chooseMovie(info);
+			if(selectMovie == 99) {
+				return;
+			}
+
 			break;
 		}
-		if(choice2 == 3 ) {
+		if (choice2 == 3) {
 			creatTicket(info);
 			return;
 		}
@@ -351,7 +382,7 @@ public class TicketManager {
 				System.out.println(finalPrice + "원 결제합니다");
 				info.setMyMoney(info.getMyMoney() - finalPrice);
 				System.out.println("결제금액의 5%가 포인트로 적립됩니다");
-				info.setPoint(info.getPoint()-usePoint+(int)(finalPrice*0.05));
+				info.setPoint(info.getPoint() - usePoint + (int) (finalPrice * 0.05));
 				System.out.println("결제가 완료됐어요");
 				return result = 0;
 			} else {

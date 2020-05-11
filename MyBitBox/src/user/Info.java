@@ -1,5 +1,5 @@
 package user;
-
+///////////////////////////////////은아꺼
 import Ticket.Ticket;
 
 public class Info {
