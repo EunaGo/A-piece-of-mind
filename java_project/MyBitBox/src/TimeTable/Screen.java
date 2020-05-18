@@ -11,11 +11,13 @@ public class Screen {
 	private String name;
 	boolean[][] seats;
 	private int price;
+	private int seatLeft;
 
 	Screen(String name, int rowNum,int seatNum, int price) {
 		this.name = name;
 		this.seats = new boolean[rowNum][seatNum];
 		this.price = price;
+		this.seatLeft = rowNum*seatNum;
 	}
 
 	public void seatMap() {
@@ -34,11 +36,14 @@ public class Screen {
 					System.out.print(" □ ");
 				}else {
 					System.out.print(" ■ ");
+					seatLeft--;
 				}
 			}
 			System.out.println();
 		}
+		System.out.println("● 잔여좌석 : "+seatLeft);
 	}
+	
 
 	public int getPrice() {
 		return price;
@@ -65,9 +70,9 @@ public class Screen {
 	}
 	
 	void showScreenInfo() {
-		System.out.println("상영관 이름(또는 번호) : "+this.name);
-		System.out.println("영화표 가격: "+this.price+"원");
-		System.out.println("\t좌석\t");
+		System.out.println("● 상영관 이름(또는 번호) : "+this.name);
+		System.out.println("● 영화표 가격: "+this.price+"원");
+		System.out.println("\t<< 좌석 >>\t");
 		seatMap();
 
 		System.out.println();

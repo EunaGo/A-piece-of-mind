@@ -11,7 +11,7 @@ public class Seat {
 
 	@Override
 	public String toString() {
-		return "예약 좌석 : " + rowNum + "열 " + seatNum;
+		return "● 예약 좌석 : " + rowNum + "열 " + seatNum;
 	}
 
 	public char getRowNum() {

@@ -15,10 +15,10 @@ public class Movie {
 	}
 	
 	public void showMovieInfo() {
-		System.out.println("영화 제목 :  "+ this.title);
-		System.out.println("영화 감독 :  "+ this.director);
-		System.out.println("영화 런타임: "+ this.runtime);
-		System.out.println("영화 연령 :  "+ this.grade+"세");
+		System.out.println("영화 제목   :  "+ this.title);
+		System.out.println("영화 감독   :  "+ this.director);
+		System.out.println("영화 런타임:  "+ this.runtime);
+		System.out.println("영화 연령   :  "+ this.grade+"세");
 	}
 
 	public String getTitle() {

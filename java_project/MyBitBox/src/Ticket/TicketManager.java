@@ -1,7 +1,7 @@
 package Ticket;
 
-////////////////////////////////////////////////////////////////////////
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import Movie.MovieManager;
@@ -10,7 +10,6 @@ import TimeTable.TimeTable;
 import TimeTable.TimeTableManager;
 import user.Info;
 import user.MemberInfo;
-import user.exception.AgeLimitException;
 import user.exception.OutOfNumberException;
 
 public class TicketManager {
@@ -18,23 +17,22 @@ public class TicketManager {
 	TimeTableManager tManager = TimeTableManager.getInstatnce();
 	MovieManager mManager = MovieManager.getInstance();
 	Scanner sc = new Scanner(System.in);
-	
+	private int total = 0;	//총매출
+	private int todayTotal = 0;	//오늘 매출
 	private int serialNum = 2020000;
-	private ArrayList<Ticket> AllTicketList;
+	private ArrayList<Ticket> TicketList;
+	
 
 	public TicketManager() {
-		AllTicketList = new ArrayList<Ticket>();
+		TicketList = new ArrayList<Ticket>();
 
 	}
 
 	public int chooseMovie(Info info) {
 		int selectMovie = 0;
-		int birthtoInt;
-		int age;
+		int birthtoInt = Integer.parseInt(info.getBirth());
+		int age = 2020 - birthtoInt / 10000; // 만 나이
 		
-		birthtoInt = Integer.parseInt(info.getBirth());
-		age = 2020 - birthtoInt / 10000; // 만 나이
-
 		for (int i = 0; i < mManager.getMovieList().size(); i++) {
 			System.out.print(i + 1 + ") ");
 			System.out.println(mManager.getMovieList().get(i).getTitle());
@@ -42,37 +40,26 @@ public class TicketManager {
 
 		while (true) {
 			try {
-
 				System.out.print("영화 선택 >> ");
 				selectMovie = Integer.parseInt(sc.nextLine().trim()) - 1;
 				if (selectMovie >= mManager.getMovieList().size()) {
 					OutOfNumberException e = new OutOfNumberException();
 					throw e;
 				}
-				
 				if (mManager.getMovieList().get(selectMovie).getGrade() > age) {
-					//AgeLimitException e = new AgeLimitException();
 					System.out.println("연령제한으로 선택하신 영화는 예매가 불가합니다.");
 					return 99;
-//					throw e;
-				}
 
+				}
 			} catch (OutOfNumberException e) {
 				System.out.println(e.getMessage());
 				continue;
-			}
-				//catch (AgeLimitException e) {
-//				System.out.println(e.getMessage());
-//				continue;
-//			}
-			catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("잘못된 입력이에요");
 				continue;
-			} 
-			
+			}
 			break;
 		}
-
 		return selectMovie;
 	}
 
@@ -84,7 +71,7 @@ public class TicketManager {
 		Ticket ticket = null; // 예약 완료한 티켓
 		TimeTable reserved_TimeTable = null; // 예약한 시간표
 		Seat reserved_Seat = null; // 예약한 좌석
-
+		
 		ArrayList<TimeTable> choiceTableList;// 선택한 영화의 제목과 일치하는 시간표를 담을 리스트
 		int selectMovie = 0; // 선택한 영화
 		int selectTable = 0; // 선택한 시간표
@@ -96,8 +83,8 @@ public class TicketManager {
 		int choice2 = 0;
 		int choicePoint = 0;
 		int usePoint = 0;
-//		int birthtoInt;	// String타입의 brith를 Int로 담을 변수
-		 while (true) {
+		int birthtoInt;	// String타입의 brith를 Int로 담을 변수
+		while (true) {
 			System.out.println("1.영화정보보기");
 			System.out.println("2.영화예매");
 			try {
@@ -117,16 +104,15 @@ public class TicketManager {
 		}
 
 		switch (choice) {
-		case 1: // 영화 정보보기
+		case 1:
 			while (true) {
 				selectMovie = chooseMovie(info);
 				if(selectMovie == 99) {	
 					return;
 				}
 				mManager.getMovieList().get(selectMovie).showMovieInfo();
-
 				System.out.println("이 영화로 예매하시겠어요?");
-				// int choice2 = 0;
+
 				while (true) {
 					System.out.println("1.YES\t2.다른영화선택\t3.예매 창 종료");
 					try {
@@ -145,7 +131,6 @@ public class TicketManager {
 					break;
 				}
 				if (choice2 == 1) {
-
 //					int birthyear;	// 태어난 년도
 //					int age;
 //					
@@ -154,30 +139,27 @@ public class TicketManager {
 //					
 //					if(mManager.getMovieList().get(selectMovie).getGrade()>age) {	
 //						System.out.println("연령제한으로 선택하신 영화는 예매가 불가합니다.");
-//						continue;
-//					}
+//						continue;}
 					break;
 				} else if (choice2 == 2) {
 					continue;
-				} else {
+				}else {
 					break;
-				}
+					}
 			}
-
 			break;
-
-		case 2: // 영화예매
+		case 2:
 			selectMovie = chooseMovie(info);
-			if(selectMovie == 99) {
+			if(selectMovie == 99) {	
 				return;
 			}
-
 			break;
 		}
-		if (choice2 == 3) {
+		if(choice2 == 3 ) {
 			creatTicket(info);
 			return;
 		}
+
 		// 상영중인 영화 중에 사용자가 선택한 영화에 맞는 영화제목을 시간표리스트에서 찾아서 출력
 		// 시간표 선택
 		System.out.println("<선택한 영화로 검색한 상영시간표>");
@@ -260,47 +242,21 @@ public class TicketManager {
 		reserved_TimeTable.showTimeTable();
 		System.out.println("선택한 좌석 : " + (char) (selectRow + 64) + "열 " + selectSeat);
 		System.out.println("-------------------\n 티켓 가격 : " + getTicketPrice(reserved_TimeTable));
+		String ticketNo = Integer.toHexString(serialNum);
+		reserved_Seat = new Seat((char) (selectRow + 64), selectSeat);
+		ticket = new Ticket(ticketNo, reserved_TimeTable, reserved_Seat,getTicketPrice(reserved_TimeTable));
 
-//		////////////////////////////
-//		if (info.getPoint() > 0) {
-//			System.out.println("현재 보유하고 계신 포인트는" + info.getPoint() + "점입니다.");
-//			System.out.println("사용하시겠습니까? \n 1.네    2.아니오");
-//			choicePoint = Integer.parseInt(sc.nextLine().trim());
-//		}
-//		if (choicePoint == 1) { // 포인트 사용
-//			System.out.println("사용하실 포인트를 입력해주세요.");
-//			usePoint = Integer.parseInt(sc.nextLine().trim());
-//			System.out.println(usePoint + "를 사용하여 결제금액 " + (getTicketPrice(reserved_TimeTable) - usePoint) + "입니다.");
-//			System.out.println("결제하시겠습니까?\n1.결제   2.다시 예매");
-//
-//			choicePoint = Integer.parseInt(sc.nextLine().trim());
-//
-//			if (choicePoint == 1) {
-//
-//				System.out.println(getTicketPrice(reserved_TimeTable) - usePoint + "원 결제합니다.\n 결제가 완료됐어요.");
-//
-//			}
-//		} else { // 포인트 노사용
-//
-//		}
 
-		////////////////////////////
-
-		// 결제 하시겠어요?
-		// 맴버 정보와 선택한 시간표값을 매개변수로 받아서 payment 메서드 실행
-		if (payment(info, reserved_TimeTable) == 1) {
+		ticket = payment(info, ticket);
+		if (ticket == null) {
 			return;
 		}
 
-		reserved_Seat = new Seat((char) (selectRow + 64), selectSeat);
-
 		// 스크린에 좌석배열에 true로 만들어주는거
-		tManager.getTable().get(selectTable).getScreen().setSeats(selectRow, selectSeat, true);
+		reserved_TimeTable.getScreen().setSeats(selectRow, selectSeat, true);
 
-		String ticketNo = Integer.toHexString(serialNum);
-		ticket = new Ticket(ticketNo, reserved_TimeTable, reserved_Seat);
 
-		info.setTicket(ticket);// 생성된 티켓을 회원정보에 넣어줌
+		info.getTickets().add(ticket);// 생성된 티켓을 회원정보에 넣어줌
 
 		addTicketList(ticket);
 
@@ -314,11 +270,10 @@ public class TicketManager {
 	// 예매하는 회원의 정보와 회원이 예매한 시간표를 받아서 결제를 해주는 메서드
 	// int값 1을 반환시 결제 실패
 	// int값 0을 반환시 결제 성공
-	public int payment(Info info, TimeTable table) {
-		int result = -1;
+	public Ticket payment(Info info, Ticket ticket) {
 		int choice = 0;
 		int choicePoint = 0;
-		int finalPrice = getTicketPrice(table);
+		int finalPrice = ticket.getFinalPrice();
 		int usePoint = 0;
 		if (info.getPoint() > 0) {
 			while (true) {
@@ -354,7 +309,7 @@ public class TicketManager {
 					}
 					break;
 				}
-				finalPrice = getTicketPrice(table) - usePoint;
+				finalPrice = ticket.getFinalPrice() - usePoint;
 				System.out.println(usePoint + "를 사용하여 결제금액 " + finalPrice + "입니다.");
 			}
 		}
@@ -381,27 +336,58 @@ public class TicketManager {
 			if (info.getMyMoney() >= finalPrice) {
 				System.out.println(finalPrice + "원 결제합니다");
 				info.setMyMoney(info.getMyMoney() - finalPrice);
-				System.out.println("결제금액의 5%가 포인트로 적립됩니다");
-				info.setPoint(info.getPoint() - usePoint + (int) (finalPrice * 0.05));
+				if (info instanceof MemberInfo) {
+					System.out.println("결제금액의 5%가 포인트로 적립됩니다");
+					info.setPoint(info.getPoint() - usePoint + (int) (finalPrice * 0.05));
+					ticket.setUsePoint((int) (finalPrice * 0.05));
+				}
 				System.out.println("결제가 완료됐어요");
-				return result = 0;
+				ticket.setFinalPrice(finalPrice);
+				total += finalPrice;
+				return ticket;
 			} else {
 				System.out.println("잔액이 부족해요. 메인으로 돌아갈게요");
-				return result = 1;
+				return null;
 
 			}
 
 		case 2:
 			System.out.println("처음으로 돌아갑니다.");
-			return result = 1;
+			return null;
 		}
-		return result;
+		return ticket;
 	}
 
 	// 삭제 : 회원이 가지고있는 티켓을 null값으로 변경
 	public void delTicket(Info id) {
 		int choice = 0;
+		int delTicketIndex;
 		while (true) {
+
+			// 회원이 가진 전체 티켓 출력
+			if(id.getTickets().size()==0) {
+				System.out.println("※※※※예매 내역이 없습니다※※※※");
+				return;
+			}
+			id.showAllMyTicket();
+
+			System.out.println("삭제하실 티켓을 선택하세요.");
+			
+
+			try {
+				delTicketIndex = Integer.parseInt(sc.nextLine().trim())-1;
+				if (!(delTicketIndex>=0 && delTicketIndex<=id.getTickets().size()-1)) {
+					OutOfNumberException e = new OutOfNumberException();
+					throw e;
+				}
+			} catch (OutOfNumberException e) {
+				System.out.println(e.getMessage());
+				continue;
+			} catch (Exception e) {
+				System.out.println("잘못된 입력이에요");
+				continue;
+			}
+
 			System.out.println("정말로 예매를 취소하시겠어요?");
 			System.out.println("1.YES\t2.No");
 			try {
@@ -425,24 +411,29 @@ public class TicketManager {
 
 			// 1. 관리자가 가지고 있는 예매목록에서 삭제
 			// 회원이 가지고있는 티켓과 관리자가 가지고있는 예매목록을 비교 후에 같으면 삭제
-			for (int i = 0; i < AllTicketList.size(); i++) {
-				if (id.getTicket() == AllTicketList.get(i)) {
-					AllTicketList.remove(i);
+			for (int i = 0; i < TicketList.size(); i++) {
+				if (id.getTickets().get(delTicketIndex) == TicketList.get(i)) {
+					TicketList.remove(i);
 				}
 			}
 			// 2. 환불 : 회원이 산 티켓 가격과 회원이 현재 보유한 금액을 더해서 set해줌
-			id.setMyMoney(id.getMyMoney() + getTicketPrice(id.getTicket().gettTable()));
-			System.out.println("환불 금액 :" + getTicketPrice(id.getTicket().gettTable()) + "원");
-			System.out.println("현재 잔액 :" + id.getMyMoney() + "원");
+			id.setMyMoney(id.getMyMoney() + id.getTickets().get(delTicketIndex).getFinalPrice());
+			System.out.println("환불 금액 : " + id.getTickets().get(delTicketIndex).getFinalPrice() + "원");
+			System.out.println("현재 잔액 : " + id.getMyMoney() + "원");
+			if (id instanceof MemberInfo) {
+				id.setPoint(id.getPoint()-id.getTickets().get(delTicketIndex).getUsePoint());
+				System.out.println("회수 포인트 : "+id.getTickets().get(delTicketIndex).getUsePoint()+"포인트");
+			}
+			total -= id.getTickets().get(delTicketIndex).getFinalPrice();
 
 			// 3. 회원이 선택한 좌석의 값을 false로 바꿔줌
-			char selectRow = (char) (id.getTicket().getSeat().getRowNum() - 64);
-			int selectSeat = id.getTicket().getSeat().getSeatNum();
-			id.getTicket().gettTable().getScreen().setSeats(selectRow, selectSeat, false);
+			char selectRow = (char) (id.getTickets().get(delTicketIndex).getSeat().getRowNum() - 64);
+			int selectSeat = id.getTickets().get(delTicketIndex).getSeat().getSeatNum();
+			id.getTickets().get(delTicketIndex).gettTable().getScreen().setSeats(selectRow, selectSeat, false);
 
 			// 4. 회원이 가진 티켓을 null로 만들기
-			id.setTicket(null);
-			System.out.println("삭제가 완료되었어요");
+			id.getTickets().remove(delTicketIndex);
+			System.out.println("정상적으로 삭제되었습니다.");
 			break;
 		case 2:
 			System.out.println("메인으로 돌아갈게요");
@@ -454,27 +445,26 @@ public class TicketManager {
 	// 티켓리스트에 생성된 티켓 추가
 	// serialCode +1
 	public void addTicketList(Ticket tic) {
-
-		AllTicketList.add(tic);
+		TicketList.add(tic);
 		serialNum += 20;
 	}
 
 	// 예매 현황 및 매출 출력해주는 메서드
 	public void showAllTicket() {
-		int total = 0; // 총 예매된 티켓가격
 		// 1. 예매된 티켓의 총 개수 출력
-		System.out.println("현재 예매 티켓 수 : " + AllTicketList.size());
-		// 2. 예매된 티켓들의 가격을 더해주고
-		for (int i = 0; i < AllTicketList.size(); i++) {
-			total += getTicketPrice(AllTicketList.get(i).gettTable());
-		}
+		System.out.println("오늘 예매 티켓 수 : " + TicketList.size());
 		// 3. 매출 출력
+		
 		System.out.println("총 매출 : " + total);
 
 	}
 
 	public ArrayList<Ticket> getTickets() {
-		return AllTicketList;
+		return TicketList;
+	}
+	
+	public int getTotal() {
+		return total;
 	}
 
 }

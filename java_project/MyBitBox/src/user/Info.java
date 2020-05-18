@@ -1,25 +1,24 @@
 package user;
-///////////////////////////////////은아꺼
+
+import java.util.ArrayList;
+
 import Ticket.Ticket;
 
 public class Info {
 	
-	Ticket ticket;
 	private int myMoney;
 	private int point;
 	private String birth;
-	
+	private ArrayList<Ticket> tickets;
 	public int getMyMoney() {
 		return myMoney;
 	}
 	public void setMyMoney(int myMoney) {
 		this.myMoney = myMoney;
 	}
-	public Ticket getTicket() {
-		return ticket;
-	}
-	public void setTicket(Ticket ticket) {
-		this.ticket = ticket;
+	
+	public ArrayList<Ticket> getTickets() {
+		return tickets;
 	}
 	public int getPoint() {
 		return point;
@@ -33,6 +32,9 @@ public class Info {
 //	public void setBirth(int birth) {
 //		this.birth = birth;
 //	}
+	public void showAllMyTicket() {
+		
+	}
 	
 
 	

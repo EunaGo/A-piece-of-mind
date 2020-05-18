@@ -27,8 +27,7 @@ public class MovieMenu {
 			continue;
 		}
 		
-	
-		//메뉴 별 기능 
+		//기능 별 메뉴 
 		switch (num) {
 		case MenuIf.SHOWALL: //영화 전체 출력
 			System.out.println("\n\t<< 영화 정보 전체 출력 >>");
@@ -36,7 +35,8 @@ public class MovieMenu {
 			m.showAllMovie();
 			break;
 		case MenuIf.ADD: //영화 추가
-			System.out.println("\n\t<< 영화 정보 추가  >>");
+			System.out.println("\n--------------------------------");
+			System.out.println("\t<< 영화 정보 추가  >>");
 			m.addMovie();
 			break;
 		case MenuIf.EDIT: //영화 수정
@@ -48,6 +48,7 @@ public class MovieMenu {
 			m.delMovie();
 			break;
 		case MenuIf.MENUHOME: //홈으로 이동 
+			 System.out.println("▶ 메뉴로 돌아갑니다.");
 			return;
 		} //switch
 		

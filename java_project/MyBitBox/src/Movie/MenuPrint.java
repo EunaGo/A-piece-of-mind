@@ -15,7 +15,7 @@ public class MenuPrint {
 	}
 	
 	public static void MenuEdit() {
-		System.out.println("\n----------------------------------");
+		System.out.println("----------------------------------");
 		System.out.println("\t<< 수정  메뉴를 선택하세요  >>");
 		System.out.println("\t"+MenuIf.EDITMENU1+". 영화 제목 수정");
 		System.out.println("\t"+MenuIf.EDITMENU2+". 영화 감독 수정");
