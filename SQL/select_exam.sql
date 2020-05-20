@@ -220,9 +220,9 @@ group by job;
 
 -- 26. 관리자 수를 나열하시오.
 
-select mgr, count(mgr)
-from emp
-group by mgr;
+select count(distinct(mgr))
+from emp;
+
 
 -- 27. 급여 최고액, 급여 최저액의 차액을 출력하시오.
 

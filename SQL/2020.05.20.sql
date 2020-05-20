@@ -265,4 +265,13 @@ order by job
 
 -- substr(원본 데이터, 시작 인덱스, 개수)
 select substr(hiredate, 0,5) from emp;  -- 81/02
-select substr(hiredate, 4,2) from emp;  --
+select substr(hiredate, 4,2) from emp;  -- 
+
+select job,count(*)
+from emp
+where job = 'MANAGER'
+group by job
+;
+
+select count(distinct mgr)
+from emp;
