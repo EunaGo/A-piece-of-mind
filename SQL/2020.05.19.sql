@@ -201,3 +201,11 @@ select ename, sal from emp where not sal<=3000 or not sal>=2000;
 
 select ename, job, sal from emp where  not sal in (1300,950) and job ='CLERK' or job = 'SALESMAN'and not sal = 1600;
  
+ -- demo_madang 확인
+ select * from tab;
+ desc book;
+ desc customer;
+ desc orders;
+ select * from book;
+ select * from customer;
+ 
