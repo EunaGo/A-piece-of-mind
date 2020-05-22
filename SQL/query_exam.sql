@@ -2,7 +2,7 @@
 
 select ename, job
 from emp
-where empno != 7788 and job in (
+where job in (
 select job
 from emp
 where empno = 7788);
