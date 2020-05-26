@@ -10,43 +10,11 @@ WHERE OWNER = SCOTT;
 SELECT *
 FROM user_tables;
 
---
-create table phoneInfo_basic
-(idx number(6) not null,
-fr_name varchar2(20) not null,
-fr_phonenumber varchar2(20) not null,
-fr_email varchar2(20),
-fr_address varchar2(20),
-fr_regdate date default sysdate,
-primary key(idx));
 
-desc phoneInfo_basic;
-
-insert into phoneInfo_basic values(123456,'goeuna','010-9389-8415','abc@gmail','성산동','');
-
-select * from phoneInfo_basic; 
-
-create table phoneInfo_univ(
-idx number(6) not null,
-fr_u_major varchar2(20) default 'n' not null,
-fr_u_year number(1) default 1 not null,
-fr_ref number(7) not null,
-primary key(idx),
-foreign key(fr_ref) references phoneInfo_basic(idx),
-constraint year_heck check(fr_u_year>0 and fr_u_year<5));
-
-select * from phoneInfo_univ;
-
-create table phoneInfo_com(
-idx number(6) not null,
-fr_c_company varchar(20) default 'n' not null,
-fr_ref number(6) not null,
-primary key(idx),
-foreign key(fr_ref) references phoneInfo_basic(idx));
-
+-- phonebook
 create table phonebook(
 pidx number(4),
-name varchar2(10) not null,
+pname varchar2(10) not null,
 phonenum varchar2(20) not null,
 address varchar2(20) default '입력 없음' not null,
 email varchar2(20) default '입력 없음' not null,
@@ -62,5 +30,76 @@ primary key(pidx),
 constraint category_pbtype check(pbtype in ('univ', 'com', 'cafe')),
 constraint phonenum_check unique(phonenum));
 
+drop table phonebook;
+
+-- test
 select *
 from phonebook;
+
+
+-----------------------------------------------------------------
+
+-- 사용자 정의 제약조건을 저장하는 딕셔너리 테이블
+desc user_constraints;
+select * from user_constraints where table_name='PHONEBOOK';
+
+-----------------------------------------------------------------
+
+
+
+-----------------------------------------------------------------
+-- 정보 입력 SQL 작성
+-----------------------------------------------------------------
+
+desc phonebook;
+
+select * from phonebook;
+
+-- 기본 정보 입력
+
+desc phonebook;
+insert into phonebook(pidx,pname,phonenum,address,email,pbtype) values(1,'euna','010-9389-8415','성산동','gumagoo8@gmail.com','univ');
+
+-- default 입력 처리 address, email
+
+insert into phonebook(pidx,pname,phonenum,pbtype) values(2,'scott','010-4567-8415','com');
+
+--학교 친구 정보 입력
+
+insert into phonebook(pidx, pname, phonenum, address, email, pbtype, major, grade) 
+values(3, 'son', '010-3333-1111', '서울', 'son@gmail.com', 'univ', 'computer', 1);
+
+--회사 친구 정보 입력
+
+insert into phonebook(pidx, pname, phonenum, address, email, pbtype, comname, deptname, deptjob) 
+values (4, '박지성', '010-1234-0000', '런던', 'ji@gmail.com', 'com', 'NAVER', 'SEARCH', 'PROGRAMER');
+
+-- 모임 친구 입력
+
+insert into phonebook(pidx, pname, phonenum, address, email, pbtype, cafename, nickname) 
+values (5, 'Rain', '010-1111-2222', 'SEOUL', 'rain@gmail.com', 'cafe', 'Campping', 'FirstCamp');
+
+
+------------------------------------------------------------------------
+-- 정보 출력 질의 
+------------------------------------------------------------------------
+
+select pidx, pname, phonenum from phonebook;
+
+select * from phonebook;
+
+-- 2. 대학 친구 정보 출력 질의
+
+select pname, phonenum, major, grade from phonebook where pbtype='univ';
+
+
+-- 3. 회사 친구 정보 출력 질의
+
+select pname, phonenum, comname, deptname, deptjob from phonebook where pbtype='com';
+
+
+-- 4. 모임 친구 정보 출력 질의
+
+select pname, phonenum, cafename, nickname from phonebook where pbtype='cafe';
+
+

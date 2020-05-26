@@ -34,6 +34,11 @@ group by job
 order by 2)
 where rownum = 1;
 
+select job, avg(sal)
+from emp
+group by job
+having avg(sal) <= all(select avg(sal) from emp group by job);
+
 -- 47. 각 부서의 최소 급여를 받는 사원의 이름, 급여, 부서번호를 표시하시오.
 
 select ename, sal, deptno
@@ -148,6 +153,11 @@ from emp
 group by job
 order by 2)
 where rownum = 1;
+
+select job
+from emp
+group by job
+having avg(sal) <= all(select avg(sal) from emp group by job);
 
 -- 59. 담당업무가 MANAGER 인 사원이 소속된 부서와 동일한 부서의 사원을 표시하시오.
 
