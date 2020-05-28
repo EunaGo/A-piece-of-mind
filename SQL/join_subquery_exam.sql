@@ -47,38 +47,55 @@ from orders;
 
 --(10) 고객의이름과고객별구매액
 
-select distinct name, sum(saleprice)
-from customer, orders
-where orders.custid in (
-select custid
-from orders
-group by custid)
+select name, sum(saleprice)
+from customer c, orders o
+where c.custid = o.custid
 group by name;
-
-
-
 
 --(11) 고객의이름과고객이구매한도서목록
 
-
-
+select c.name, b.bookname
+from book b, customer c, orders o
+where o.custid = c.custid and o.bookid = b.bookid
+order by name;
 
 --(12) 도서의가격(Book 테이블)과판매가격(Orders 테이블)의차이가가장많은주문
 
-
-
+select * from orders o join book b on o.bookid=b.bookid
+where abs(price-saleprice) >=all(
+select abs(price-saleprice)
+from(select * from orders o, customer c, book b where o.custid=c.custid and o.bookid = b.bookid));
 
 --(13) 도서의판매액평균보다자신의구매액평균이더높은고객의이름
 
-
-
-
+select c.name
+from orders o join customer c 
+on o.custid=c.custid
+group by c.name
+having avg(saleprice) > all(select avg(saleprice) from orders );
 
 --3. 마당서점에서 다음의 심화된 질문에 대해 SQL 문을 작성하시오.
 --(1) 박지성이 구매한 도서의 출판사와 같은 출판사에서 도서를 구매한 고객의 이름
 
-
-
+select c.name
+from book b, customer c, orders o
+where o.custid = c.custid and o.bookid = b.bookid and b.publisher in (
+select publisher
+from book
+where bookid in (
+select bookid
+from orders
+where custid = (select custid
+from customer
+where name = '박지성')))
+and c.name != '박지성'
+order by c.name desc;
 
 --(2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
+
+select distinct c.name
+from book b, customer c, orders o
+where o.custid = c.custid and o.bookid = b.bookid 
+group by c.name
+having count(distinct b.publisher) >= 2;
 
