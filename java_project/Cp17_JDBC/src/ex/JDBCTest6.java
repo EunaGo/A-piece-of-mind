@@ -206,9 +206,9 @@ public class JDBCTest6 {
 			System.out.println("===============================");
 			// ResultSet -> 결과 참조
 			while (rs.next()) {
-				System.out.print(rs.getInt("empno") + "\t");
-				System.out.print(rs.getString("ename") + "\t");
-				System.out.print(rs.getString("job") + "\n");
+				System.out.printf(rs.getInt("empno") + "\t");
+				System.out.printf("%-5s",rs.getString("ename")+"\t");
+				System.out.printf("%-5s",rs.getString("job") + "\n");
 			}
 			System.out.println("===============================");
 
@@ -283,9 +283,9 @@ public class JDBCTest6 {
 			System.out.println("===============================");
 			// ResultSet -> 결과 참조
 			while (rs.next()) {
-				System.out.print(rs.getInt("empno") + "\t");
-				System.out.print(rs.getString("ename") + "\t");
-				System.out.print(rs.getString("job") + "\n");
+				System.out.printf(rs.getInt("empno") + "\t");
+				System.out.printf("%-5s",rs.getString("ename") + "\t");
+				System.out.printf("%-5s",rs.getString("job") + "\n");
 			}
 			System.out.println("===============================");
 
@@ -496,8 +496,8 @@ public class JDBCTest6 {
 			// ResultSet -> 결과 참조
 			while (rs.next()) {
 				System.out.print(rs.getInt("deptno") + "\t");
-				System.out.print(rs.getString("dname") + "\t");
-				System.out.print(rs.getString("loc") + "\n");
+				System.out.printf("%-12s",rs.getString("dname"));
+				System.out.printf("%-5s",rs.getString("loc") + "\n");
 			}
 			System.out.println("===============================");
 
@@ -573,8 +573,8 @@ public class JDBCTest6 {
 			// ResultSet -> 결과 참조
 			while (rs.next()) {
 				System.out.print(rs.getInt("deptno") + "\t");
-				System.out.print(rs.getString("dname") + "\t");
-				System.out.print(rs.getString("loc") + "\n");
+				System.out.printf("%-12s",rs.getString("dname") + "\t");
+				System.out.printf("%-5s",rs.getString("loc") + "\n");
 			}
 			System.out.println("===============================");
 
@@ -621,7 +621,7 @@ public class JDBCTest6 {
 	
 	public static void main(String[] args) {
 		
-		deptList();
+		empList();
 		
 	}
 }
