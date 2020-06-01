@@ -39,9 +39,6 @@ public class JDBCTest3 {
 			// ResultSet : next() -> 행의 존재 유무 확인
 			
 			while(rs.next()) {
-//				System.out.print(rs.getInt("deptno") + "\t");
-//				System.out.print(rs.getString("dname") + "\t");
-//				System.out.print(rs.getString("loc") + "\n");
 				System.out.print(rs.getInt(1) + "\t");
 				System.out.print(rs.getString(2) + "\t");
 				System.out.print(rs.getString(3) + "\n");
