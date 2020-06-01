@@ -393,7 +393,7 @@ public class JDBCTest6 {
 			// 3. Statement : Connection
 			Statement stmt = conn.createStatement();
 
-			String sql = "update dept set loc = 'LA' where deptno = 10";
+			String sql = "update dept set dname = 'SERVICE', loc = 'BUSAN' where deptno = 10";
 
 			int resultCnt = stmt.executeUpdate(sql);
 
@@ -621,7 +621,7 @@ public class JDBCTest6 {
 	
 	public static void main(String[] args) {
 		
-		deptSearch();
+		deptList();
 		
 	}
 }
