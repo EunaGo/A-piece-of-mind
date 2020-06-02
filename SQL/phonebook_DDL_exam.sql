@@ -10,7 +10,6 @@ fr_regdate date default sysdate,
 primary key(idx));                  
 -- primary key는 not null, unique 속성을 가지고 있음
 
-
 -- test
 insert into phoneInfo_basic values(123456,'goeuna','010-9389-8415','abc@gmail','성산동','');
 select * from phoneInfo_basic; 
