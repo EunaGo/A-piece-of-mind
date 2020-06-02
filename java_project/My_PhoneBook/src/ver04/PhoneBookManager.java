@@ -8,17 +8,6 @@ public class PhoneBookManager {
 	
 	PhoneInfo info = null;
 	
-	PhoneBookManager(){
-		
-	}
-	PhoneInfo addInfo(info) {
-		
-	}
-	void addInfo() {
-		
-	}
-	void search
-	
 	
 	
 }
