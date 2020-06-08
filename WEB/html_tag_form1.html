@@ -7,7 +7,11 @@
     <meta charset="utf-8">
     <link>
     <style>
-
+        
+        h1{
+            color: black;
+            
+        }
     </style>
     <script>
     </script>
@@ -22,6 +26,26 @@
 
 
     <form action="" method="get">
+        
+        선택하세요.
+        <select name="year">
+            <option value="20">2020</option>
+            <option value="19">2019</option>
+            <option value="18">2018</option>
+            <option value="17">2017</option>
+        </select>년
+        <select name="month">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>월
+        <select name=""day>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>일
+        
+        <br>
         <input type="checkbox" name="like" value="dog">강아지
         <input type="checkbox" name="like" value="cat">고양이
         
@@ -35,8 +59,11 @@
         <input type="hidden" name="userName" value="scott">
         <input type="hidden" name="idx" value="2">
         
+        <br>
+        <input type="button" value="확인하기">
         <input type="submit">
         <input type="submit" value="보내기">
+        <input>
 
 
     </form>
