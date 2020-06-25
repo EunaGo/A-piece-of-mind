@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Hello, world!</title>
+  <!--JQuery CDN-->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, name=" viewport />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <!--  Fonts and icons  -->
+  <!-- Fonts and icons -->
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+
+  <!-- Material Kit CSS -->
+  <link href="../assets/css/material-kit.css?v=2.0.7" rel="stylesheet" />
+
+  <!--스위퍼-->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+
+
+  <!-- 내가만든 CSS-->
+  <link href="../css/index.css" rel="stylesheet" />
+  <link href="../css/euna.css" rel="stylesheet" />\
+  <style>
+    #size {
+      width: 800px;
+      height: 500px;
+      background-color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    $(function () {
+      $("#draggable").draggable();
+      $("#droppable").droppable({
+        drop: function (event, ui) {
+          $(this)
+            .addClass("ui-state-highlight")
+            .find("p")
+            .html("Dropped!");
+        }
+      });
+    });
+  </script>
+
+<div id="size" class="container">
+  <div class="row">
+      <div class="col-sm-4">
+        <img src="../images/manwon.jpg" id="draggable" class="ui-widget-content" width="100">
+
+      <img src="../images/bowl.jpg" id="droppable" id=width="200" height="100">
+      <p>drop here</p>
+
+      </div>
+  </div>
+</div>
+
+
+  <script src="../js/euna.js"></script>
+  <script src="../js/index.js"></script>
+</body>
+
+</html>
