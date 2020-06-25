@@ -1,5 +1,48 @@
-//메뉴 클릭 이벤트
-$('div.col-sm-2.menu1.ml-5.mt-5').click(function (e) {
+$('#div > img.hvr-grow').click(function(){
+    alert('clicked');
+    // tVal = $('div:col(0)').text();
+    // console.log(tVal);
+});
+
+$('.menu2').click(function(){
+    click();
+});
+$('.menu3').click(function(){
+    click();
+});
+$('.menu4').click(function(){
+    click();
+});
+
+$('.delorder').click(function(){
+    $('.order-list').empty();
+});
+
+$('.plusorder').click(function(){
+    var befVal = $('.orderqty').text();
+    if (befVal>9) {
+        alert('주문을 더 추가하실 수 없습니다.');
+    }else{
+        $('.orderqty').text(++befVal);    
+    }
+});
+
+$('.minusorder').click(function(){
+    var befVal = $('.orderqty').text();
+    if (befVal==1) {
+        $('.order-list').empty();
+    }else{
+        $('.orderqty').text(--befVal);    
+    }
+});
+
+
+
+
+
+/*
+
+function (e) {
     var target = $('p',this).text();
     var addHTML = '';
  
@@ -24,4 +67,8 @@ $('div.col-sm-2.menu1.ml-5.mt-5').click(function (e) {
      }else{
          alert('중복값 존재');
      }
- });
+ }
+
+
+
+*/

@@ -1,11 +1,26 @@
-var menus = [];
+var coffee = [];
+var drink = [];
+var dessert = [];
+var othermenu = [];
+
+
+// 메뉴 클릭 시 색깔 이벤트
+$(document).ready(function () {
+    $("li").each(function () {
+        $(this).click(function () {
+            $(this).addClass("selected");               //클릭된 부분을 상단에 정의된 CCS인 selected클래스로 적용
+            $(this).siblings().removeClass("selected");  //siblings:형제요소들,    removeClass:선택된 클래스의 특성을 없앰
+        });
+    });
+});
+
+// 메인 메뉴 클릭 시 리셋
+$('.navbar-brand').click(function (e){
+        location.reload();
+});
 
 //커피 클릭 이벤트
 $('#1').click(function (e) {
-    $('#1').parent().addClass('active');
-    $('#2').parent().removeClass('active');
-    $('#2').parent().removeClass('active');
-    $('#2').parent().removeClass('active');
     $('.swiper-container.center-block.1').show();
     $('.swiper-container.center-block.2').hide();
     $('.swiper-container.center-block.3').hide();
@@ -15,10 +30,6 @@ $('#1').click(function (e) {
 
 //음료 클릭 이벤트
 $('#2').click(function (e) {
-    $('#1').parent().removeClass('active');
-    $('#2').parent().addClass('active');
-    $('#2').parent().removeClass('active');
-    $('#2').parent().removeClass('active');
     $('.swiper-container.center-block.1').hide();
     $('.swiper-container.center-block.2').show();
     $('.swiper-container.center-block.3').hide();
@@ -27,10 +38,6 @@ $('#2').click(function (e) {
 
 //디저트 클릭 이벤트
 $('#3').click(function (e) {
-    $('#1').parent().removeClass('active');
-    $('#2').parent().removeClass('active');
-    $('#2').parent().addClass('active');
-    $('#2').parent().removeClass('active');
     $('.swiper-container.center-block.1').hide();
     $('.swiper-container.center-block.2').hide();
     $('.swiper-container.center-block.3').show();
@@ -40,10 +47,6 @@ $('#3').click(function (e) {
 
 //기타메뉴 클릭 이벤트
 $('#4').click(function (e) {
-    $('#1').parent().removeClass('active');
-    $('#2').parent().removeClass('active');
-    $('#2').parent().removeClass('active');
-    $('#2').parent().addClass('active');
     $('.swiper-container.center-block.1').hide();
     $('.swiper-container.center-block.2').hide();
     $('.swiper-container.center-block.3').hide();
@@ -52,11 +55,23 @@ $('#4').click(function (e) {
 
 
 
-// JSON 파일 로드
+// JSON 파일 로드(커피)
 function jsonParse() {
-    $.getJSON('../json/data.json', function (data) { 
-        menus = data;
-        console.log(menus);
+    $.getJSON('../json/coffee.json', function (data) { 
+        coffee = data;
+        console.log(coffee);
+    });
+    $.getJSON('../json/drink.json', function (data) { 
+        drink = data;
+        console.log(drink);
+    });
+    $.getJSON('../json/dessert.json', function (data) { 
+        dessert = data;
+        console.log(dessert);
+    });
+    $.getJSON('../json/othermenu.json', function (data) { 
+        othermenu = data;
+        console.log(othermenu);
     });
 };
 
@@ -68,3 +83,4 @@ function init() {
 };
 
 init();
+
