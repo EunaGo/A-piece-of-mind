@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-	<title>Hello, world!</title>
+	<title>BIT CAFE</title>
 	<!--JQuery CDN-->
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
@@ -31,9 +31,9 @@
 	<link href="../css/euna.css" rel="stylesheet" />
 	<link href="../css/jin.css" rel="stylesheet" />
 	<link href="../css/myung.css" rel="stylesheet" />
-	<link href="../css/kjj.css" rel="stylesheet" />
 	<link href="../css/jungmin.css" rel="stylesheet" />
 	<link href="../css/seongmin.css" rel="stylesheet" />
+	<link href="../css/kjj.css" rel="stylesheet" />
 
 
 </head>
@@ -50,19 +50,19 @@
 				<span class="navbar-toggler-bar navbar-kebab"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-				<a class="navbar-brand" href="javascript:;">AIA Cafe</a>
-				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<a class="navbar-brand" style="text-align: center;" style="font-size: 2em;">BiT Cafe</a>
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="margin: 0;">
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:;" id="1">커피 <span class="sr-only">(current)</span></a>
+						<a class="nav-link" id="1">커피 <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:;" id=2>음료</a>
+						<a class="nav-link" id=2>음료</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:;" id="3">디저트</a>
+						<a class="nav-link" id="3">디저트</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="javascript:;" id="4">기타메뉴</a>
+						<a class="nav-link" id="4">기타메뉴</a>
 					</li>
 				</ul>
 				<form class="form-inline ml-auto">
@@ -127,29 +127,7 @@
 
 					<div class="swiper-container center-block 2 swiper2">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="container ">
-									<div class="row ml-4 mt-4 menu ">
-										<div class="col-sm-5 ml-3  mt-3 menu2">
-											<img class="hvr-grow" src="../images/image.JPG" class="rounded">
-											<div class="text-center mt-3">아메리카노</div>
-											<div class="text-center">&#8361;5,000</div>
-										</div>
-										<div class="col-sm-5 ml-5 mt-3 menu2">
-											<img src="../images/image.JPG" class="rounded">
-											<div class="text-center mt-3">아메리카노</div>
-											<div class="text-center">&#8361;5,000</div>
-										</div>
-										<div class="col-sm-5 ml-3 mt-5 menu2">
-											<img src="../images/image.JPG" class="rounded">
-											<div class="text-center mt-3">아메리카노</div>
-											<div class="text-center">&#8361;5,000</div>
-										</div>
 
-
-									</div>
-								</div>
-							</div>
 						</div>
 						<!-- Add Scroll Bar -->
 						<div class="swiper-button-next"></div>
@@ -160,23 +138,7 @@
 
 					<div class="swiper-container center-block 3 swiper2">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="container">
-									<div class="row ml-4 mt-4 menu ">
-										<div class="col-sm-5 ml-3  mt-3 menu3">
-											<img class="hvr-grow" src="../images/image.JPG" class="rounded">
-											<div class="text-center mt-3">아메리카노</div>
-											<div class="text-center">&#8361;5,000</div>
-										</div>
-										<div class="col-sm-5 ml-5 mt-3 menu3">
-											<img src="../images/image.JPG" class="rounded">
-											<div class="text-center mt-3">아메리카노</div>
-											<div class="text-center">&#8361;5,000</div>
-										</div>
 
-									</div>
-								</div>
-							</div>
 						</div>
 						<!-- Add Scroll Bar -->
 						<div class="swiper-button-next"></div>
@@ -185,17 +147,7 @@
 
 					<div class="swiper-container center-block 4 swiper2">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="container ">
-									<div class="row ml-4 mt-4 menu ">
-										<div class="col-sm-5 ml-3  mt-3 menu4">
-											<img class="hvr-grow" src="../images/image.JPG" class="rounded">
-											<div class="text-center mt-3">아메리카노</div>
-											<div class="text-center">&#8361;5,000</div>
-										</div>
-									</div>
-								</div>
-							</div>
+
 						</div>
 						<!-- Add Scroll Bar -->
 						<div class="swiper-button-next"></div>
@@ -223,12 +175,11 @@
 							<P>Price</P>
 						</div>
 					</div>
-					<div class="swiper-container swiper1">
-
+					<div class="swiper-container swiper1 ordercon">
 						<div class="swiper-wrapper orderswiper">
 							<div class="swiper-slide orderslide">
-								<div class="container">
-									<div class="row order-list">
+								<div class="container productList">
+									<!-- <div class="row order-list">
 										<div class="col-sm-1 delorder z">❌</div>
 										<div class="col-sm-3 ordername z">아메리카노</div>
 										<div class="col-sm-1 plusorder z">➕</div>
@@ -236,16 +187,7 @@
 										<div class="col-sm-1 minusorder z">➖</div>
 										<div class="col-sm-3 orderprice z">5000</div>
 										<div class="col-sm-1 orderprice z">원</div>
-									</div>
-									<div class="row order-list">
-										<div class="col-sm-1 delorder z">❌</div>
-										<div class="col-sm-3 ordername z">아메리카노</div>
-										<div class="col-sm-1 plusorder z">➕</div>
-										<div class="col-sm-2 orderqty z">1</div>
-										<div class="col-sm-1 minusorder z">➖</div>
-										<div class="col-sm-3 orderprice z">5000</div>
-										<div class="col-sm-1 orderprice z">원</div>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -255,49 +197,75 @@
 
 
 				<div class="col-sm-12 pay-grid mt-4">
-					<div>
-						<div class="container">
-							<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-								<a class="btn btn-default" href="#layer2" id="5">결제</a>
+					<div class="container-finalprice">
+						<div class="finalprice">
+							<div class="finalprice-text">
+								Total Price
+							</div>
+							<div class="finalprice-price">
+								<!-- 동적가격 -->0
+							</div>
+							<div class="finalwon">
+								원
+							</div>
+						</div>
+					</div>
+					<div class="container-button-pay">
+						<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+							<a class="btn btn-default" href="#layer2" id="5">결제</a>
 
-								<div class="dim-layer">
-									<div class="dimBg"></div>
-									<div id="layer2" class="pop-layer">
-										<div class="pop-container">
-											<div class="pop-conts">
-												<!--content //-->
-												<p class="ctxt mb20">Thank you.<br>
-													Your registration was submitted successfully.<br>
-													Selected invitees will be notified by e-mail on JANUARY
-													24th.<br><br>
-													Hope to see you soon!
-													<br><br>
-												<div class="payment">
-													<img src="../images/manwon.jpg" id="draggable"
-														class="ui-widget-content">
+							<div class="dim-layer">
+								<div class="dimBg"></div>
+								<div id="layer2" class="pop-layer">
+									<div class="pop-container">
+										<div class="pop-conts">
+											<!--content //-->
+											<p class="ctxt mb20">결제하시겠어요?<br>
+												결제를 원하신다면<br>
+												바구니에 돈을 넣어주세요!<br><br>
+												결제가 완료됩니다.
+												<br><br>
+											<div class="payment">
+												<img src="../images/manwon.jpg" id="draggable"
+													class="ui-widget-content">
 
-													<img src="../images/bowl.jpg" id="droppable" class="notcss">
-												</div>
-												</p>
-
-												<div class="btn-r">
-													<a href="#" class="btn-layerClose">Close</a>
-												</div>
-												<!--// content-->
+												<img src="../images/bowl.jpg" id="droppable" class="notcss">
 											</div>
+											</p>
+
+											<div class="btn-r">
+												<a href="#" class="btn-layerClose">Close</a>
+											</div>
+											<!--// content-->
 										</div>
 									</div>
 								</div>
+							</div>
 
-								<a class="btn btn-default" href="javascript:;" id="6">초기화</a>
+							<a class="btn btn-default" href="javascript:;" id="6">초기화</a>
 
-							</ul>
+						</ul>
 
-						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<div class="contents">
+					<div class="banner">
+						<ul>
+							<li><a href="https://www.starbucks.co.kr/index.do" target="_blank" ><img src="../images/starbucks.jpg" width="340" height="210px"></a></li>
+							<li><a href="https://www.twosome.co.kr:7009/microsite/2020/101summer/index.asp" target="_blank"><img src="../images/twosome.jpg" width="340" height="210px"></a></li>
+							<li><a href="https://www.ediya.com/" target="_blank"><img src="../images/ediya.jpg" width="340" height="210px"></a></li>
+							<li><a href="http://www.hollys.co.kr/" target="_blank"><img src="../images/hollys.JPG" width="340" height="210px"></a></li>
+							<li><a href="https://www.coffeebeankorea.com/main/main.asp" target="_blank"><img src="../images/bean.jpg" width="340" height="210px"></a></li>
+							<li><a href="https://www.tomntoms.com/" target="_blank"><img src="../images/tom.jpg" width="340" height="210px"></a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
 
 
@@ -327,6 +295,8 @@
 	<!-- 드래그 앤 드랍 -->
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+	
+
 	<!-- Initialize Swiper -->
 	<script>
 		var swiper = new Swiper('.swiper1', {
@@ -353,13 +323,14 @@
 
 
 	<!--내가만든 스크립트-->
+	<script src="../js/kjj.js"></script>
+	<script src="../js/seongmin.js"></script>
 	<script src="../js/index.js"></script>
 	<script src="../js/jungmin.js"></script>
 	<script src="../js/euna.js"></script>
 	<script src="../js/jin.js"></script>
 	<script src="../js/myung.js"></script>
-	<script src="../js/kjj.js"></script>
-	<script src="../js/seongmin.js"></script>
+
 
 </body>
 
