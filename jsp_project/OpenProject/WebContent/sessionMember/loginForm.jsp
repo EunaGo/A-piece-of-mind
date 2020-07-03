@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-<%@ page import="util.CookieBox_login" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%-- <%
-	response.addCookie(CookieBox_login.createCookie("ideuna", "pweuna", "/web/", 60));
-%> --%>
-=======
 <%@page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -19,15 +10,15 @@
 	
 	if(cookieUid!=null){
 		uidValue = cookieUid;
-		checked = "checked";
+		
+	} else {
+		uidValue = "";
+		
 	}
 	
-	
- 
 %>
 
 
->>>>>>> d3aa7ad3144cc7716ea58ea197024bb428cf136b
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,12 +28,9 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/css/default.css">
 
 <style>
+
 </style>
-<<<<<<< HEAD
-<script>
-</script>
-=======
->>>>>>> d3aa7ad3144cc7716ea58ea197024bb428cf136b
+
 </head>
 <body>
 

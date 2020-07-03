@@ -6,12 +6,12 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-public class CookieBox_login {
+public class CookieBox {
 
 	// Cookie 紐⑸줉�쓣 Map�뿉 ���옣�빐�꽌 愿�由�
 	private Map<String, Cookie> cookieMap = new HashMap<String, Cookie>();
 
-	public CookieBox_login(HttpServletRequest request) {
+	public CookieBox(HttpServletRequest request) {
 
 		Cookie[] cookies = request.getCookies();
 
@@ -53,16 +53,33 @@ public class CookieBox_login {
 		return new Cookie(name, value);
 	}
 
-	
-	public static Cookie createCookie(String id, String pw, String path, int maxAge) {
-		
-		Cookie cookie = new Cookie(id, pw);
-		
+	public static Cookie createCookie(String name, String value, String path, int maxAge) {
+
+		Cookie cookie = new Cookie(name, value);
+		// 경로 설정
 		cookie.setPath(path);
-		
+
+		// maxAge 설정
 		cookie.setMaxAge(maxAge);
-		
+
 		return cookie;
 	}
+
+	public static Cookie createCookie(String name, String value, String domain, String path, int maxAge) {
+
+		Cookie cookie = new Cookie(name, value);
+
+		// 도메인 설정
+		cookie.setDomain(domain);
+
+		// 경로 설정
+		cookie.setPath(path);
+
+		// maxAge 설정
+		cookie.setMaxAge(maxAge);
+
+		return cookie;
+	}
+	
 
 }
