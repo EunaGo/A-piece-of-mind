@@ -1,10 +1,10 @@
-<%@ page import="util.CookieBox_login"%>
+<%@ page import="util.CookieBox_login" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%
+<%-- <%
 	response.addCookie(CookieBox_login.createCookie("ideuna", "pweuna", "/web/", 60));
-%>
+%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,18 +40,6 @@ td {
 }
 </style>
 <script>
-
-$(document).ready(function(){
-$("#save").change(function(){
-	if($("#save").is(":checked")){
-		alert('hi');
-	}
-});
-
-
-});
-
-	
 </script>
 </head>
 <body>

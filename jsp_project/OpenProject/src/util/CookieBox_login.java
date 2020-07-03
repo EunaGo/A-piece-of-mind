@@ -8,17 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 
 public class CookieBox_login {
 
-	// Cookie 목록을 Map에 저장해서 관리
+	// Cookie 紐⑸줉�쓣 Map�뿉 ���옣�빐�꽌 愿�由�
 	private Map<String, Cookie> cookieMap = new HashMap<String, Cookie>();
 
 	public CookieBox_login(HttpServletRequest request) {
 
 		Cookie[] cookies = request.getCookies();
 
-		// 쿠키 데이터를 Map에 모두 저장
+		// 荑좏궎 �뜲�씠�꽣瑜� Map�뿉 紐⑤몢 ���옣
 		for (int i = 0; i < cookies.length; i++) {
 
-			// Map 데이터 저장
+			// Map �뜲�씠�꽣 ���옣
 			cookieMap.put(cookies[i].getName(), cookies[i]);
 		}
 	}
@@ -32,15 +32,15 @@ public class CookieBox_login {
 
 		String result = null;
 
-		// 쿠키여부 확인
+		// 荑좏궎�뿬遺� �솗�씤
 		Cookie cookie = getCookie(name);
 
-		// 쿠키가 존재한다면
+		// 荑좏궎媛� 議댁옱�븳�떎硫�
 		if (cookie != null) {
 			result = cookie.getValue();
 		}
 
-		// return은 하나로 사용하는 것이 좋음
+		// return�� �븯�굹濡� �궗�슜�븯�뒗 寃껋씠 醫뗭쓬
 		return result;
 	}
 
@@ -48,7 +48,7 @@ public class CookieBox_login {
 		return cookieMap.get(name) != null;
 	}
 
-	// 쿠키 객체 생성 메서드(static)
+	// 荑좏궎 媛앹껜 �깮�꽦 硫붿꽌�뱶(static)
 	public static Cookie createCookie(String name, String value) {
 		return new Cookie(name, value);
 	}

@@ -1,4 +1,4 @@
-<%@ page import="util.CookieBox" %>
+<%@ page import="util.CookieBox"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -12,10 +12,8 @@ Cookie c2 = new Cookie("uname", "고은아");
 response.addCookie(c2); 
 */
 
-	/* response.addCookie(CookieBox.createCookie("uid","Cool","/web/",60));
-	response.addCookie(CookieBox.createCookie("uname","쿠키"));
-	 */
-	response.addCookie(CookieBox.createCookie("ideuna","pweuna","/web/",60));
+response.addCookie(CookieBox.createCookie("uid", "Cool", "/web/", 60));
+response.addCookie(CookieBox.createCookie("uname", "쿠키"));
 %>
 
 <!DOCTYPE html>
