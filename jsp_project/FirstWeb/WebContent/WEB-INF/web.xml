@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>FirstWeb</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
-  <!-- 서블릿 등록 -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>FirstWeb</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- 서블릿 등록 -->
 	<servlet>
 		<!-- 서블릿 식별할 수 있는 이름 -->
 		<servlet-name>testServlet</servlet-name>
@@ -24,23 +27,23 @@
 		<!-- http://localhost:8080/web/hello -->
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
-  
-  <!-- 우선순위: 에러페이지 > 타입 > 에러페이지(web.xml) -->
-  
-  <!-- 상태 코드의 에러 페이지 설정 -->
-  <error-page>
-  	<error-code>404</error-code>
-  	<location>/error/error_404.jsp</location>
-  </error-page>
-  
-    <error-page>
-  	<error-code>500</error-code>
-  	<location>/error/error_500.jsp</location>
-  </error-page>
-  
-  <!-- 타입별 에러페이지 설정 -->
-  <error-page>
-  <exception-type>java.lang.NullPointerException</exception-type>
-  <location>/error/error_null.jsp</location>
-  </error-page>
-  </web-app>
+
+	<!-- 우선순위: 에러페이지 > 타입 > 에러페이지(web.xml) -->
+
+	<!-- 상태 코드의 에러 페이지 설정 -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/error_404.jsp</location>
+	</error-page>
+
+	<!-- <error-page>
+		<error-code>500</error-code>
+		<location>/error/error_500.jsp</location>
+	</error-page> -->
+
+	<!-- 타입별 에러페이지 설정 -->
+	<error-page>
+		<exception-type>java.lang.NullPointerException</exception-type>
+		<location>/error/error_null.jsp</location>
+	</error-page>
+</web-app>
