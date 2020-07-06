@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<%@ page import="util.CookieBox_login" %>
+<%@ page import="util.CookieBox" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -27,7 +26,7 @@
 %>
 
 
->>>>>>> d3aa7ad3144cc7716ea58ea197024bb428cf136b
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,11 +37,10 @@
 
 <style>
 </style>
-<<<<<<< HEAD
+
 <script>
 </script>
-=======
->>>>>>> d3aa7ad3144cc7716ea58ea197024bb428cf136b
+
 </head>
 <body>
 

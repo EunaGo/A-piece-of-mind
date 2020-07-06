@@ -19,8 +19,6 @@
  		${token},<br>
  	</c:forTokens>
  	
- 	
- 	
- 	</h1>
+
 </body>
 </html>
