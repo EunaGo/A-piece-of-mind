@@ -1,6 +1,12 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%
+	request.setAttribute("price",10000);
+	request.setAttribute("now",new Date());
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +14,55 @@
 <title>JSTL TAG</title>
 </head>
 <body>
+	날짜 포맷팅<br>
+	<fmt:formatDate value="${now}" pattern="yyyy.MM.dd H:mm:ss"/> <br>
+	<fmt:formatDate value="${now}" pattern="yyyy.MM.dd H:mm"/> <br>
+
+
+
+	<br>
+	날짜와 시간을 동시 표현<br>
+	<fmt:formatDate value="${now}" type="both"/> <br>
+	<fmt:formatDate value="${now}" type="both" dateStyle="short" timeStyle="full"/> <br>
+	<fmt:formatDate value="${now}" type="both" dateStyle="full" timeStyle="short"/> <br>
+
+	<br>
+	날짜 표현<br>
+	<fmt:formatDate value="${now}"/><br>
+	<fmt:formatDate value="${now}" type="date"/> <br>
+	<fmt:formatDate value="${now}" type="date" dateStyle="short"/> <br>
+	<fmt:formatDate value="${now}" type="date" dateStyle="full"/> <br>
+	
+	<br>
+	시간 표현<br>
+	<fmt:formatDate value="${now}" type="time"/> <br>
+	<fmt:formatDate value="${now}" type="time" timeStyle="short"/> <br>
+	<fmt:formatDate value="${now}" type="time" timeStyle="full"/> <br>
+	
+	<hr>
+		
+	숫자타입: <fmt:formatNumber value="${price}" type="number"/>
+	
+	<fmt:formatNumber value="${price}" type="number" var="numbertype"/>
+		
+	${numberType}
+	
+	<br>
+	통화: <fmt:formatNumber value="${price}" type="currency"/>,
+	<fmt:formatNumber value="${price}" type="currency" currencySymbol="$"/>
+	<br>
+	퍼센트: <fmt:formatNumber value="${price/30000}" type="percent"/>
+	<fmt:formatNumber 
+	value="${price/30000}" 
+	type="percent"
+	groupingUsed="false"/>
+	
+	<br>
+	패턴: <fmt:formatNumber value="${price}" pattern="00000.00"/>
+	<fmt:formatNumber value="${price}" pattern="99999.99"/>
+		
+		
+	<hr>
  
  	<c:out value="jstl tag out -> 데이터를 출력합니다."/>
  	<br>
@@ -64,9 +119,9 @@
  	url4: ${reurl}
  	</h1>
  	
- 	<c:redirect url ="${reurl}">
+<%--  	<c:redirect url ="${reurl}">
  		<c:param name="month">7</c:param>
- 	</c:redirect>
+ 	</c:redirect> --%>
  	
  	
  	
